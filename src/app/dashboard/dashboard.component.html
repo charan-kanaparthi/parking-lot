@@ -1,0 +1,93 @@
+
+  <div class="card">
+    <div class="card-header">Advanced pie chart</div>
+    <div class="card-block">
+      <div class="row">
+      <div class="col-6">
+        <ngx-charts-advanced-pie-chart
+          class="chart-container"
+          [scheme]="colorScheme"
+          [results]="single"
+          (legendLabelClick)="onLegendLabelClick($event)"
+          [gradient]="gradient"
+          [tooltipDisabled]="tooltipDisabled"
+          (select)="select($event)">
+        </ngx-charts-advanced-pie-chart>
+      </div>
+
+      <!-- <div class="col-6">
+          <ngx-charts-bar-vertical-2d
+            class="chart-container"
+            [scheme]="colorScheme"
+            [schemeType]="schemeType"
+            [results]="multi"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [tooltipDisabled]="tooltipDisabled"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            (legendLabelClick)="onLegendLabelClick($event)"
+            [showGridLines]="showGridLines"
+            [barPadding]="barPadding"
+            [groupPadding]="groupPadding"
+            [roundDomains]="roundDomains"
+            (select)="select($event)">
+          </ngx-charts-bar-vertical-2d>
+        </div>
+        </div>
+    </div>
+  </div>
+
+
+
+
+
+<div class="col-12">
+  <div class="card">
+    <div class="card-header">Advanced pie chart</div>
+    <div class="card-block">
+        <ngx-charts-advanced-pie-chart
+          class="chart-container"
+          [scheme]="colorScheme"
+          [results]="single"
+          (legendLabelClick)="onLegendLabelClick($event)"
+          [gradient]="gradient"
+          [tooltipDisabled]="tooltipDisabled"
+          (select)="select($event)">
+        </ngx-charts-advanced-pie-chart>
+    </div>
+  </div>
+</div> -->
+    
+<div class="col-12">
+  <div class="card">
+    <div class="card-header">Grouped vertical bar chart</div>
+    <div class="card-block">
+        <ngx-charts-bar-vertical-2d
+          class="chart-container"
+          [scheme]="colorScheme"
+          [schemeType]="schemeType"
+          [results]="multi"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [tooltipDisabled]="tooltipDisabled"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel"
+          (legendLabelClick)="onLegendLabelClick($event)"
+          [showGridLines]="showGridLines"
+          [barPadding]="barPadding"
+          [groupPadding]="groupPadding"
+          [roundDomains]="roundDomains"
+          (select)="select($event)">
+        </ngx-charts-bar-vertical-2d>
+    </div>
+  </div>
+</div>

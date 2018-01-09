@@ -1,0 +1,81 @@
+<style>
+    .bg-2 {
+      background-image: url("");
+      max-width: 0%
+  }
+  </style>
+<div class="d-flex align-items-stretch flex-nowrap min-height-100 h-100">
+  <!-- <div class="bg-cover bg-2 hidden-sm-down col-md-6 col-lg-8"></div> -->
+  <div class="card card-block mb-0 rounded-0  col-sm-12 col-md-12 col-lg-12">
+    <form [formGroup]="form" (ngSubmit)="onSubmit(genericForm)" #genericForm="ngForm">
+      <div class="mb-3">
+        <img src="assets/images/parking.png"  class="avatar-xs mb-1" alt="">
+        <p class="ff-headers text-uppercase">Create an account</p>
+      </div>
+      <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['fname'].hasError('required') && form.controls['fname'].touched}">
+        <label for="fullname">
+          Full Name
+        </label>
+        <input type="text" class="form-control" placeholder="Full Name" [formControl]="form.controls['fname']" [ngClass]="{'form-control-danger': form.controls['fname'].hasError('required') && form.controls['fname'].touched}"/>
+        <div class="form-control-feedback" *ngIf="form.controls['fname'].hasError('required') && form.controls['fname'].touched">Full Name is required.</div>
+      </fieldset>
+      
+      
+      <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['email'].hasError('required') && form.controls['email'].touched}">
+        <label for="email">
+          Enter your Email ID
+        </label>
+        <input type="email" class="form-control" placeholder="Email ID" [formControl]="form.controls['email']" [ngClass]="{'form-control-danger': form.controls['email'].hasError('required') && form.controls['email'].touched}"/>
+        <div class="form-control-feedback" *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched">Email is required.</div>
+      </fieldset>
+
+
+      <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['role'].hasError('required') && form.controls['role'].touched}">
+        <label for="role">
+          Enter your role
+        </label>
+        <input type="email" class="form-control" placeholder="Role" [formControl]="form.controls['role']" [ngClass]="{'form-control-danger': form.controls['role'].hasError('required') && form.controls['role'].touched}"/>
+        <div class="form-control-feedback" *ngIf="form.controls['role'].hasError('required') && form.controls['role'].touched">Role is required.</div>
+      </fieldset>
+      
+
+      <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['uname'].hasError('required') && form.controls['uname'].touched}">
+        <label for="username">
+          User Name
+        </label>
+        <input type="text" class="form-control" placeholder="User Name" [formControl]="form.controls['uname']" [ngClass]="{'form-control-danger': form.controls['uname'].hasError('required') && form.controls['uname'].touched}"/>
+        <div class="form-control-feedback" *ngIf="form.controls['uname'].hasError('required') && form.controls['uname'].touched">User Name is required.</div>
+      </fieldset>
+      
+
+      <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['password'].hasError('required') && form.controls['password'].touched}">
+        <label for="password">
+          Enter your password
+        </label>
+        <input type="password" class="form-control" placeholder="********" [formControl]="form.controls['password']" [ngClass]="{'form-control-danger': form.controls['password'].hasError('required') && form.controls['password'].touched}"/>
+        <div class="form-control-feedback" *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched">Password is required.</div>
+      </fieldset>
+
+      
+      <!-- <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['confirmPassword'].hasError('required') && form.controls['confirmPassword'].touched}">
+        <label for="password">
+          Confirm your password
+        </label>
+        <input type="password" class="form-control" placeholder="********" [formControl]="form.controls['confirmPassword']" [ngClass]="{'form-control-danger': form.controls['confirmPassword'].hasError('required') && form.controls['confirmPassword'].touched}"/>
+        <div class="form-control-feedback" *ngIf="form.controls['confirmPassword'].hasError('required') && form.controls['confirmPassword'].touched">Confirm your password.</div>
+      </fieldset> -->
+
+      <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['mobile'].hasError('required') && form.controls['mobile'].touched}">
+        <label for="mobile">
+          Enter your Mobile Number
+        </label>
+        <input type="number" class="form-control" placeholder="Mobile Number" [formControl]="form.controls['mobile']" [ngClass]="{'form-control-danger': form.controls['mobile'].hasError('required') && form.controls['mobile'].touched}"/>
+        <div class="form-control-feedback" *ngIf="form.controls['mobile'].hasError('required') && form.controls['mobile'].touched">Mobile Number is required.</div>
+      </fieldset>
+      
+      <div class="block mb-3"></div>
+      <button class="btn btn-primary" type="submit">Create</button>
+      <a class="btn btn-outline-primary btn-link" [routerLink]="['/authentication/signin']">Login</a>
+    </form>
+  </div>
+</div>

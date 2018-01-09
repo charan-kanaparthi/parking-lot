@@ -1,0 +1,261 @@
+<style>
+ label{
+     text-align: left;
+ }
+ .btn-primary {
+    color: #fff;
+    background-color: #25a9e0;
+    border-color: #25a9e0;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #25a9e0;
+    border-color: #25a9e0;
+}
+select{
+    width: 90%;
+    height: 100%;
+}
+</style>
+<div *ngIf="isForm">
+  <!--page start-->
+  <!--Form-->
+  <div>
+	<!-- <img src="assets/img/avatars/book1.png" style="width:100%;height:100%;margin-top:-40px;"> -->
+   <!--<img src="assets/img/avatars/carr.png" style="width:100%;height:100%;">-->
+
+ </div>
+  <div class="animated fadeIn">
+        <div class="card card-responsive-adjust">
+           <div>  <img src="assets/img/avatars/carr.png" style="width:100%;height:100%;"> </div>
+                              
+            <div class="card-block responsive">
+                 <form action="" method="post" class="form-horizontal row" #genericForm="ngForm">
+                    <div class="form-group col-md-6 col-sm-8 col-xs-4" *ngFor="let field of fields;let in=index">
+                        <div class="row">
+                            <label class="col-4 form-control-label"   for="hf-name">{{field.label}}</label>
+                            <div class="col-8" *ngIf="field.type==='text'">
+                                <input type="{{field.type}}" id="{{field.Id}}"  name="{{field.name}}" class="{{field.className}}" placeholder="" [(ngModel)]="fields[in].value" required>
+                            </div>
+                            <div class="col-8" *ngIf="field.type==='select'">
+                                <select  [(ngModel)]="fields[in].value" id="{{field.Id}}" name="{{field.name}}" class="{{field.className}}" size="1">
+                                <option  [ngValue]="opt" *ngFor="let opt of field.options">{{opt}}</option>                
+                                </select> 
+                            </div>
+                            <div class="col-8" *ngIf="field.type==='number'">
+                                <input type="{{field.type}}" id="{{field.Id}}" name="{{field.name}}" class="{{field.className}}" [(ngModel)]="fields[in].value" placeholder="" >
+                            </div>
+                          <div class="col-8 " *ngIf="field.type==='date'">
+                            <div class="">
+                            <input class="form-control" style="float:none;"  (click)="dp.toggleCalendar()" placeholder="Select a date" ngx-mydatepicker ngModel name="{{field.name}}" #dp="ngx-mydatepicker"/>                         
+                            </div>
+                            </div>
+                            <div class="col-8" *ngIf="field.type==='radio'">
+                               <div class="row">
+                                <div class="col-1">
+                                </div>
+                                  <div  class="radio" *ngFor="let opt of field.options;let idx=index" >
+                                      <input type="radio" id="{{field.Id}}" [(ngModel)]="fields[in].value"  name="{{field.name}}" value="{{opt}}"> {{opt}}                                
+                                      &emsp;
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="col-8" *ngIf="field.type==='checkbox'">
+                            <div class="row" >
+                              <div class="col-1">
+                               </div>
+                                <div class="checkbox " *ngFor="let opt of field.options; let inn=index">
+                                      <input type="checkbox"  id="checkbox{{in}}" ngModel  name="{{field.name}}" value="{{opt}}">            
+                                 </div>
+                            </div>
+                            </div>
+                            <div class="col-8" *ngIf="field.type==='hidden'">
+                                   <input   type="hidden" id="{{field.Id}}" name="{{field.name}}" class="{{field.className}}" [(ngModel)]="fields[in].value" placeholder="">                          
+                            </div>
+                             <div class="col-8" *ngIf="field.type==='file'">
+                                <input type="file" name="file" ngModel (change)="getFiles($event)">
+                             </div>
+                        </div>
+                    </div>
+                    <br>
+                </form>
+                <!--<p>{{genericForm.value | json}}</p>-->
+                </div>
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-3"></div> 
+                    <div class="col-4"> 
+                      <button type="submit" class="btn btn-primary" (click)="onSubmit(genericForm)"><i class="fa fa-check"></i> Submit</button> 
+                    </div>
+                    <div class="col-2">
+                      <button type="reset" class="btn btn-danger"><i class="fa fa-close"></i> Reset</button>
+                    </div>
+                    <div class="col-3"></div>
+                  </div>
+                </div>        
+        </div>
+       
+    </div>
+  <!--Form-->
+  <!--Table-->
+  <div *ngIf="isShow" class="card card-responsive-adjust">
+       <div>  <img src="assets/img/avatars/park3.png" style="width:100%;height:100%;"> </div>
+       <div class="card-block responsive">
+       <div id="container-fluid" class="container-fluid">
+       <div class="row">
+             <p> <i class="icon  basic-lock-open" ></i></p>
+       <div *ngFor="let head of slot_details;let i=index"class="col-2">                  
+         <span   *ngIf="head.color=='bg-primary'" (click)="slotBook(head.slot_no)">   <i class="fa fa-car" style="color:#25a9e0"> {{head.slot_no}}</i>   </span>
+          <span   *ngIf="head.color=='bg-danger'" (click)="onSelect(head.Id);open(content)"> <i class="fa fa-car" style="color:#d50000"   > {{head.slot_no}}</i>   </span>    
+         <div *ngIf=" i%6==0">
+           <br><br>
+         </div>
+                  
+
+       </div>
+       </div>
+      </div>
+      </div>
+
+  </div>
+  <div>
+    <!--<img src="assets/img/avatars/park1.png" style="width:100%;height:100%;">-->
+   
+
+   	<img src="assets/img/avatars/app12.png" style="width:100%;height:100%;">
+   	
+
+</div>
+  <!--Table-->
+  <!--Edit Modal start-->
+  <!-- <form action="" method="post" class="" #upform="ngForm">  
+      <div bsModal #editModal="bs-modal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+          <div class="modal-content">
+              <div>  <img src="assets/img/avatars/carr.png" style="width:100%;height:100%;"> </div>
+          
+            <div class="modal-body">
+              <div class="form-horizontal row"> 
+                  <div class="form-group col-6" *ngFor="let field of modalfields;let in=index">
+                       <div class="row">
+                <label class="col-3 form-control-label"   for="hf-name">{{field.label}}</label>
+                <div class="col-9" *ngIf="field.type==='text'">
+                    <input type="{{field.type}}" id="{{field.Id}}"  name="{{field.name}}" class="{{field.className}}" placeholder=""  [(ngModel)]="modalfields[in].value"  >
+                </div>          
+                <div class="col-9" *ngIf="field.type==='number'">
+                    <input type="{{field.type}}" id="{{field.Id}}" name="{{field.name}}" class="{{field.className}}" ngModel placeholder="">
+                </div>
+                <div class="col-9" *ngIf="field.type==='date'">
+                    <input type="{{field.type}}" id="{{field.Id}}" name="{{field.name}}" class="{{field.className}}" [(ngModel)]="modalfields[in].value" placeholder="">
+                </div>
+                <div class="col-9" *ngIf="field.type==='select'">
+                <select  [(ngModel)]="modalfields[in].value" id="{{field.Id}}" name="{{field.name}}" class="{{field.className}}" size="1">
+                <option  [ngValue]="opt" *ngFor="let opt of field.options">{{opt}}</option>                
+                </select> 
+              </div>
+                <div class="col-9" *ngIf="field.type==='radio'">
+                    <div class="row" >
+                    <div class="col-1">
+                    </div>
+                    <div  class="radio" *ngFor="let opt of field.options;let idx=index" >
+                        <input type="radio" id="{{field.Id}}" [(ngModel)]="modalfields[in].value"  name="{{field.name}}" value="{{opt}}"   > {{opt}}                                
+                            &emsp;
+                    </div>
+                    </div>
+                </div>
+                <div class="col-9" *ngIf="field.type==='checkbox'">
+                <div class="row" >
+                    <div class="col-1">
+                    </div>
+                    <div class="checkbox " *ngFor="let opt of field.options; let inn=index">
+                            <input type="checkbox" [(ngModel)]="modalfields[in].value"  id="checkbox{{in}}" name="checkbox{{inn}}" value="{{opt}}"> {{opt}}
+                            &emsp;
+                        </div>
+                </div>
+                </div>
+                <div class="col-10" *ngIf="field.type==='hidden'">
+                    <input type="hidden" id="{{field.Id}}" name="{{field.name}}" class="{{field.className}}" [(ngModel)]="modalfields[in].value" placeholder="">                          
+                </div>
+            </div>
+                  </div>
+              </div>   
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="editModal.hide()">Cancel</button>
+              <button type="button" class="btn btn-primary" (click)="onUpdate(upform);editModal.hide()">Update</button>
+            </div>  
+          </div><!-/.modal-content -->
+        <!-- </div><! /.modal-dialog -->
+      <!-- </div>/.modal -->
+  <!-- </form> --> 
+  <!--Edit modal start-->
+  <!--Delete modal start-->
+  <!--Delete modal end-->
+  <!--page end-->
+</div>
+<form action="" method="post" class="" #upform="ngForm">  
+<ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+                <div>  <img src="assets/img/avatars/carr.png" style="width:100%;height:100%;"> 
+                <br/>
+                    <h3 style="text-align:center"> Un Park The Car </h3>
+                </div>
+         
+        </div>
+        <div class="modal-body">
+                <div class="form-horizontal row"> 
+                        <div class="form-group col-6" *ngFor="let field of modalfields;let in=index">
+                             <div class="row">
+                      <label class="col-3 form-control-label"   for="hf-name">{{field.label}}</label>
+                      <div class="col-9" *ngIf="field.type==='text'">
+                          <input type="{{field.type}}" id="{{field.Id}}"  name="{{field.name}}" class="{{field.className}}" placeholder=""  [(ngModel)]="modalfields[in].value"  >
+                      </div>          
+                      <div class="col-9" *ngIf="field.type==='number'">
+                          <input type="{{field.type}}" id="{{field.Id}}" name="{{field.name}}" class="{{field.className}}" ngModel placeholder="">
+                      </div>
+                      <div class="col-9" *ngIf="field.type==='date'">
+                          <input type="{{field.type}}" id="{{field.Id}}" name="{{field.name}}" class="{{field.className}}" [(ngModel)]="modalfields[in].value" placeholder="">
+                      </div>
+                      <div class="col-9" *ngIf="field.type==='select'">
+                      <select  [(ngModel)]="modalfields[in].value" id="{{field.Id}}" name="{{field.name}}" class="{{field.className}}" size="1">
+                      <option  [ngValue]="opt" *ngFor="let opt of field.options">{{opt}}</option>                
+                      </select> 
+                    </div>
+                      <div class="col-9" *ngIf="field.type==='radio'">
+                          <div class="row" >
+                          <div class="col-1">
+                          </div>
+                          <div  class="radio" *ngFor="let opt of field.options;let idx=index" >
+                              <input type="radio" id="{{field.Id}}" [(ngModel)]="modalfields[in].value"  name="{{field.name}}" value="{{opt}}"   > {{opt}}                                
+                                  &emsp;
+                          </div>
+                          </div>
+                      </div>
+                      <div class="col-9" *ngIf="field.type==='checkbox'">
+                      <div class="row" >
+                          <div class="col-1">
+                          </div>
+                          <div class="checkbox " *ngFor="let opt of field.options; let inn=index">
+                                  <input type="checkbox" [(ngModel)]="modalfields[in].value"  id="checkbox{{in}}" name="checkbox{{inn}}" value="{{opt}}"> {{opt}}
+                                  &emsp;
+                              </div>
+                      </div>
+                      </div>
+                      <div class="col-10" *ngIf="field.type==='hidden'">
+                          <input type="hidden" id="{{field.Id}}" name="{{field.name}}" class="{{field.className}}" [(ngModel)]="modalfields[in].value" placeholder="">                          
+                      </div>
+                  </div>
+                        </div>
+                    </div>   
+                  </div>
+        
+        <div class="modal-footer" >
+            <div style="margin-right:25%; ">
+                    <button type="button" class="btn btn-danger" (click)="c('Close click')">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="onUpdate(upform);c('Close click')">Un Park</button>     
+                 
+            </div>
+          </div>
+      </ng-template>
+</form>
+<router-outlet></router-outlet>

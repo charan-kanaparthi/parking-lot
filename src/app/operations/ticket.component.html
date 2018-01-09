@@ -1,0 +1,125 @@
+<style>
+  .borderless td, .borderless th {
+    border: none;
+    border-spacing: 0px;
+    
+    
+}
+input {
+    width: 100%;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #25a9e0;
+    border-color: #25a9e0;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #25a9e0;
+    border-color: #25a9e0;
+}
+
+.example1 {
+    background-image: url('assets/img/avatars/ticket.png');
+    /*background-position: right bottom, left top;
+    background-repeat: no-repeat, repeat;*/
+    
+}
+
+</style>
+
+<div *ngIf="isForm">
+  <!--page start-->
+  <!--Form-->
+    <div>
+	<!-- <img src="assets/img/avatars/book1.png" style="width:100%;height:100%;margin-top:-40px;"> -->
+   <!--<img src="assets/img/avatars/carr.png" style="width:100%;height:100%;">-->
+
+ </div>
+  <div class="animated fadeIn">
+         <div class="card">
+            <div>  <img src="assets/img/avatars/carr.png" style="width:100%;height:100%;"> </div>
+                            
+          <div class="card-block ">
+                        <div class="row">
+                            <div class="col-3">
+
+                            </div>
+                            <div>
+                            <!--<p> {{today | date}}</p>
+                            <p>Or if you prefer, {{today | date:'fullDate'}}</p>
+                            <p>The time is {{today | date:'jmZ'}}</p>
+                            <p>Finally the date and time is </p>-->
+                        </div>
+                            <div class="example1" style="width:505px;height:505px" >
+                               
+                                 <div style="margin-top:152px;padding-left:33px">
+                                        <h3 style=" margin-top: -5px;padding-left: 27px;">T NO</h3>
+                             
+                                  </div>
+                                 <div style="margin-top:160px;padding-left:75px">
+                                     <h1>{{slot_no}}</h1>
+                                 </div>
+
+                               <div style="margin-top:-270px;padding-left:165px">
+                    
+                               <h3 style="margin-top:-15px;padding-left:85px">Ticket</h3>
+                              <p style="padding-left:95px">Date: {{today | date:'short'}}</p>
+                            
+                               <table class="table table-sm borderless" style="width:250px;" >
+                                 <tbody>
+                                        <tr>
+                                        <td >Name</td>
+                                        <td>{{name}}</td>
+                                        </tr>
+                                        <tr>
+                                        <td >car no</td>
+                                         <td> {{car_no}}</td>                        
+                                        </tr>
+                                        <tr>
+                                        <td >ticket</td>
+                                        <td> {{slot_no}}</td>
+                             
+                                        </tr>
+                                         <tr>
+                                        <td >fare</td>
+                                        <td>{{fare}}</td>
+                             
+                                        </tr>
+                                         <tr>
+                                        <td >parking time</td>
+                                        <td>{{today | date:'short'}}</td>
+                             
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                               </div>                                                     
+                            </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-6"></div> 
+                                <div class="col-4"> 
+                                  <button type="submit" class="btn btn-primary" (click)="onSubmit()"><i class="fa fa-check"></i> Go Home</button> 
+                                </div>
+                               
+                                   
+                </div>
+            </div>
+            
+             <div class="card-footer">
+             
+                </div>  
+        </div>
+     <div>
+    <img src="assets/img/avatars/park1.png" style="width:100%;height:100%;">
+   
+
+   	<img src="assets/img/avatars/app12.png" style="width:100%;height:100%;">
+   	
+
+</div>
+
+
+        </div>
+<router-outlet></router-outlet>
